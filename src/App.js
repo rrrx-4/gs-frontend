@@ -1,23 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import Table from './components/Table';
+import Modal from './components/Modal';
+import { useGlobalContext } from './context';
 
 function App() {
+
+  const { isEdit, editUser } = useGlobalContext();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col items-center justify-between h-screen bg-slate-200">
+      <Table></Table>
+      {isEdit && <Modal></Modal>}
     </div>
   );
 }
